@@ -46,7 +46,7 @@ with open(sys.argv[1], 'r') as access_log:
                     get_304_count += 1
                     get_304_len += int(words[9])
             line_count += 1
-        except Exception, e:
+        except Exception:
             error_analysis_count += 1
 
 # stat result output

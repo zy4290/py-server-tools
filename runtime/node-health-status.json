@@ -1,0 +1,23 @@
+{
+    "tomcat01": {
+        "status": "dead",
+        "lastcheck": "2016-05-13 15:12:25.076987",
+        "reboot-count": 3
+    },
+    "tomcat02": {
+        "status": "running",
+        "fail-count": 4,
+        "last-check": "2016-05-13 15:12:25.076987",
+        "reboot-count": 0
+    },
+    "tomcat03": {
+        "status": "dead",
+        "last-check": "2016-05-13 15:12:25.076987",
+        "reboot-count": 0
+    },
+    "tomcat04": {
+        "status": "dead",
+        "last-check": "2016-05-13 15:12:25.076987",
+        "reboot-count": 0
+    }
+}

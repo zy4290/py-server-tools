@@ -1,0 +1,14 @@
+{
+    "primary":{
+        "group-name":"lsip1",
+        "nodes":[
+            "tomcat01","tomcat02"
+        ]
+    },
+    "standby":{
+        "group-name":"lsip2",
+        "nodes":[
+            "tomcat03","tomcat04"
+        ]
+    }
+}

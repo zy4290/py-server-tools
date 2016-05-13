@@ -1,21 +1,45 @@
 {
-    "project-name":"lsip",
-    "nginx":
-    {
-        "nginx-home":"/usr/local/nginx",
-        "upstream-conf-path":"/usr/local/nginx/conf/nginx.conf",
-        "upstream":
-        [
-            {
-                "health-check-url":"http://www.baidu.com",
-                "upstream-url":"127.0.0.1:8080",
-                "is-backup":false
+    "project-name": "lsip",
+    "nginx": {
+        "nginx-home": "/usr/local/nginx",
+        "upstream-conf-path": "test-data/upstream.conf",
+        "upstream": {
+            "upstream-name": "lsip",
+            "keepalive": 50,
+            "lsip1": {
+                "nodes": {
+                    "tomcat01": {
+                        "health-check-url": "http://www.baidu.com",
+                        "upstream-url": "127.0.0.1:8080",
+                        "start-cmd":"",
+                        "stop-cmd":""
+                    },
+                    "tomcat02": {
+                        "node-name": "tomcat02",
+                        "test-url": "http://www.baidu.com",
+                        "upstream-url": "127.0.0.1:8081",
+                        "start-cmd":"",
+                        "stop-cmd":""
+                    }
+                }
             },
-            {
-                "test-url":"http://www.baidu.com",
-                "upstream-url":"127.0.0.1:8081",
-                "is-backup":true
+            "lsip2": {
+                "nodes": {
+                    "tomcat01": {
+                        "health-check-url": "http://www.baidu.com",
+                        "upstream-url": "127.0.0.1:8080",
+                        "start-cmd":"",
+                        "stop-cmd":""
+                    },
+                    "tomcat02": {
+                        "node-name": "tomcat02",
+                        "test-url": "http://www.baidu.com",
+                        "upstream-url": "127.0.0.1:8081",
+                        "start-cmd":"",
+                        "stop-cmd":""
+                    }
+                }
             }
-        ]
+        }
     }
 }
