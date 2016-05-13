@@ -1,0 +1,27 @@
+{
+    "project-name":"lsip",
+    "nginx":
+    {
+        "nginx-home":"/usr/local/nginx",
+        "upstream-conf-path":"/usr/local/nginx/conf/nginx.conf",
+        "upstream":
+        [
+            {
+                "name":"jetty1",
+                "start-command":"/opt/jettygroup/jetty1/bin/jetty.sh start",
+                "stop-command":"/opt/jettygroup/jetty1/bin/jetty.sh stop",
+                "health-check-url":"http://www.baidu.com",
+                "upstream-url":"127.0.0.1:8080",
+                "is-backup":false
+            },
+            {
+                "name":"jetty2",
+                "start-command":"/opt/jettygroup/jetty1/bin/jetty.sh start",
+                "stop-command":"/opt/jettygroup/jetty1/bin/jetty.sh stop",
+                "test-url":"http://www.baidu.com",
+                "upstream-url":"127.0.0.1:8081",
+                "is-backup":true
+            }
+        ]
+    }
+}
