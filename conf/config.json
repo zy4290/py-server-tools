@@ -1,11 +1,12 @@
 {
-    "project-name": "lsip",
+    "project-name": "test",
     "nginx": {
         "nginx-home": "/usr/local/nginx",
-        "upstream-conf-path": "test-data/upstream.conf",
+        "nginx-reload-cmd": "nginx -s reload",
+        "upstream-conf-path": "/etc/nginx/conf.d/upstream.conf",
         "upstream": {
-            "upstream-name": "lsip",
-            "keepalive": 10,
+            "upstream-name": "jetty",
+            "keepalive": 1,
             "node-group": {
                 "lsip1": {
                     "nodes": {

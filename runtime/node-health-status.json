@@ -1,38 +1,38 @@
 {
     "jetty1-backup": {
-        "status": "dead", 
-        "health-check-url": "http://127.0.0.1:8082/", 
-        "last-response-time": 0.004, 
-        "reboot-count": 0, 
-        "last-response-code": 500, 
-        "fail-count": 10, 
-        "last-check-time": "2016-05-14 19:31:05"
-    }, 
-    "jetty2": {
         "status": "running", 
-        "health-check-url": "http://127.0.0.1:8081/", 
-        "last-response-time": 0.004, 
+        "health-check-url": "http://127.0.0.1:8082/", 
+        "last-response-time": 0.008, 
         "reboot-count": 0, 
         "last-response-code": 200, 
         "fail-count": 0, 
-        "last-check-time": "2016-05-14 19:31:05"
+        "last-check-time": "2016-05-14 21:48:25"
+    }, 
+    "jetty2": {
+        "status": "dead", 
+        "health-check-url": "http://127.0.0.1:8081/", 
+        "last-response-time": 0.001, 
+        "reboot-count": 0, 
+        "last-response-code": 502, 
+        "fail-count": 5, 
+        "last-check-time": "2016-05-14 21:48:25"
     }, 
     "jetty2-backup": {
         "status": "dead", 
         "health-check-url": "http://127.0.0.1:8083/", 
         "last-response-time": 0.0, 
         "reboot-count": 0, 
-        "last-response-code": 500, 
-        "fail-count": 10, 
-        "last-check-time": "2016-05-14 19:31:05"
+        "last-response-code": 502, 
+        "fail-count": 5, 
+        "last-check-time": "2016-05-14 21:48:25"
     }, 
     "jetty1": {
-        "status": "dead", 
+        "status": "running", 
         "health-check-url": "http://127.0.0.1:8080/", 
-        "last-response-time": 0.0, 
+        "last-response-time": 0.005, 
         "reboot-count": 0, 
-        "last-response-code": 500, 
-        "fail-count": 10, 
-        "last-check-time": "2016-05-14 19:31:05"
+        "last-response-code": 200, 
+        "fail-count": 0, 
+        "last-check-time": "2016-05-14 21:48:25"
     }
 }

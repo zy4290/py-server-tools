@@ -37,7 +37,6 @@ except Exception:
                 'fail-count': 0,
                 'reboot-count': 0,
                 'last-check-time': time.strftime('%Y-%m-%d %H:%M:%S')}
-    # print(node_health_status)
     # write into file
     with open('runtime/node-health-status.json', 'w') as new_health_staus_file:
         new_health_staus_file.write(json.dumps(node_health_status, indent=4))
@@ -49,7 +48,7 @@ for node_name in node_health_status.keys():
     url = node_health_status[node_name]['health-check-url']
 
     response = None
-    ret_code = 500
+    ret_code = 502
     begin_time = time.time()
     end_time = None
     try:

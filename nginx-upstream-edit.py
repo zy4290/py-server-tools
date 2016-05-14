@@ -10,13 +10,12 @@ with open('runtime/node-group-status.json', 'r') as group_staus_file:
     node_group_status = json.load(group_staus_file)
 
 primary = node_group_status['primary']
+primary_group_name = primary['group-name']
+primary_nodes = primary['nodes']
 
 # acquire upstream node status
 with open('runtime/node-health-status.json', 'r') as health_staus_file:
     node_health_status = json.load(health_staus_file)
-
-primary_group_name = primary['group-name']
-primary_nodes = primary['nodes']
 
 # alive_primary = []
 # for node in primary['nodes']:
@@ -31,11 +30,9 @@ primary_nodes = primary['nodes']
 upstream_config = config['nginx']['upstream']
 nodes_config = config['nginx']['upstream'][
     'node-group'][primary_group_name]['nodes']
-upstream_content = 'upstream ' + \
-    upstream_config['upstream-name'] + '\n{\n'
+upstream_content = 'upstream ' + upstream_config['upstream-name'] + '\n{\n'
 for node in primary_nodes:
-    upstream_content += '\tserver ' + \
-        nodes_config[node]['upstream-url']
+    upstream_content += '\tserver ' + nodes_config[node]['upstream-url']
     if nodes_config[node]['backup']:
         upstream_content += ' backup'
     upstream_content += ';\n'

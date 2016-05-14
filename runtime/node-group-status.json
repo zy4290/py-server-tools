@@ -1,14 +1,16 @@
 {
-    "primary":{
-        "group-name":"lsip1",
-        "nodes":[
-            "jetty1","jetty1-backup"
+    "standby": {
+        "group-name": "lsip2", 
+        "nodes": [
+            "jetty2-backup", 
+            "jetty2"
         ]
-    },
-    "standby":{
-        "group-name":"lsip2",
-        "nodes":[
-            "jetty2","jetty2-backup"
+    }, 
+    "primary": {
+        "group-name": "lsip1", 
+        "nodes": [
+            "jetty1-backup", 
+            "jetty1"
         ]
     }
 }
