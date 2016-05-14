@@ -46,9 +46,6 @@ else:
 
 # print(upstream_content)
 # write to upstream confs
-try:
-    with open(config['nginx']['upstream-conf-path'], 'w') \
-            as upstream_config_file:
-        upstream_config_file.write(upstream_content)
-except Exception:
-    print('fail to open %s, abort.' % config['nginx']['upstream-conf-path'])
+with open(config['nginx']['upstream-conf-path'], 'w') \
+        as upstream_config_file:
+    upstream_config_file.write(upstream_content)
