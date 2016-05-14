@@ -2,13 +2,13 @@
     "primary":{
         "group-name":"lsip1",
         "nodes":[
-            "tomcat01","tomcat02"
+            "jetty1","jetty1-backup"
         ]
     },
     "standby":{
         "group-name":"lsip2",
         "nodes":[
-            "tomcat03","tomcat04"
+            "jetty2","jetty2-backup"
         ]
     }
 }

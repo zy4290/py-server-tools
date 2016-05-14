@@ -5,39 +5,45 @@
         "upstream-conf-path": "test-data/upstream.conf",
         "upstream": {
             "upstream-name": "lsip",
-            "keepalive": 50,
-            "lsip1": {
-                "nodes": {
-                    "tomcat01": {
-                        "health-check-url": "http://www.baidu.com",
-                        "upstream-url": "127.0.0.1:8080",
-                        "start-cmd":"",
-                        "stop-cmd":""
+            "keepalive": 10,
+            "node-group": {
+                "lsip1": {
+                    "nodes": {
+                        "jetty1": {
+                            "health-check-url": "http://127.0.0.1:8080/",
+                            "upstream-url": "127.0.0.1:8080",
+                            "start-cmd": "/opt/jettygroup/jetty1/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty1/bin/jetty.sh stop",
+                            "backup": false
+                        },
+                        "jetty1-backup": {
+                            "health-check-url": "http://127.0.0.1:8082/",
+                            "upstream-url": "127.0.0.1:8082",
+                            "start-cmd": "/opt/jettygroup/jetty1-backup/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty1-backup/bin/jetty.sh stop",
+                            "backup": true
+                        }
                     },
-                    "tomcat02": {
-                        "node-name": "tomcat02",
-                        "test-url": "http://www.baidu.com",
-                        "upstream-url": "127.0.0.1:8081",
-                        "start-cmd":"",
-                        "stop-cmd":""
-                    }
-                }
-            },
-            "lsip2": {
-                "nodes": {
-                    "tomcat01": {
-                        "health-check-url": "http://www.baidu.com",
-                        "upstream-url": "127.0.0.1:8080",
-                        "start-cmd":"",
-                        "stop-cmd":""
+                    "default-group": "primary"
+                },
+                "lsip2": {
+                    "nodes": {
+                        "jetty2": {
+                            "health-check-url": "http://127.0.0.1:8081/",
+                            "upstream-url": "127.0.0.1:8081",
+                            "start-cmd": "/opt/jettygroup/jetty2/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty2/bin/jetty.sh stop",
+                            "backup": false
+                        },
+                        "jetty2-backup": {
+                            "health-check-url": "http://127.0.0.1:8083/",
+                            "upstream-url": "127.0.0.1:8083",
+                            "start-cmd": "/opt/jettygroup/jetty2-backup/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty2-backup/bin/jetty.sh stop",
+                            "backup": true
+                        }
                     },
-                    "tomcat02": {
-                        "node-name": "tomcat02",
-                        "test-url": "http://www.baidu.com",
-                        "upstream-url": "127.0.0.1:8081",
-                        "start-cmd":"",
-                        "stop-cmd":""
-                    }
+                    "default-group": "standby"
                 }
             }
         }
