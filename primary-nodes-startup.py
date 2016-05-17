@@ -20,12 +20,17 @@ with open('runtime/node-health-status.json', 'r') as health_staus_file:
 
 error_nodes_list = []
 for node_name in primary_nodes_list:
-    if node_health_status[node_name]['status'] == 'dead' or \
-            node_health_status[node_name]['status'] == 'n/a':
+    if (node_health_status[node_name]['status'] == 'dead' or
+            node_health_status[node_name]['status'] == 'n/a') and \
+            node_health_status[node_name]['reboot-count'] < 5:
         error_nodes_list.append(node_name)
 
-# print(error_nodes_list)
+print(error_nodes_list)
 
 for error_node in error_nodes_list:
     os.system(primary_nodes_info[error_node]['stop-cmd'])
     os.system(primary_nodes_info[error_node]['start-cmd'])
+    node_health_status[node_name]['reboot-count'] += 1
+
+with open('runtime/node-health-status.json', 'w') as new_health_staus_file:
+    new_health_staus_file.write(json.dumps(node_health_status, indent=4))

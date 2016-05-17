@@ -1,16 +1,16 @@
 {
     "standby": {
-        "group-name": "lsip2", 
-        "nodes": [
-            "jetty2-backup", 
-            "jetty2"
-        ]
-    }, 
-    "primary": {
-        "group-name": "lsip1", 
+        "group-name": "jetty1", 
         "nodes": [
             "jetty1-backup", 
             "jetty1"
+        ]
+    }, 
+    "primary": {
+        "group-name": "jetty2", 
+        "nodes": [
+            "jetty2-backup", 
+            "jetty2"
         ]
     }
 }

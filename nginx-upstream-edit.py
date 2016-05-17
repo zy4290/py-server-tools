@@ -44,7 +44,7 @@ if 'keepalive' in upstream_config:
 else:
     upstream_content = upstream_content[:-1] + '\n}\n'
 
-# print(upstream_content)
+print(upstream_content)
 # write to upstream confs
 with open(config['nginx']['upstream-conf-path'], 'w') \
         as upstream_config_file:

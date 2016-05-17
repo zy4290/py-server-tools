@@ -5,7 +5,7 @@ import time
 import urllib2
 
 # set global timeout
-socket.setdefaulttimeout(60)
+socket.setdefaulttimeout(30)
 
 # read nodes status
 try:
@@ -69,6 +69,7 @@ for node_name in node_health_status.keys():
         if ret_code == 200:
             node['status'] = 'running'
             node['fail-count'] = 0
+            node['reboot-count'] = 0
         elif node['status'] == 'running' or node['status'] == 'n/a':
             node['status'] = 'error'
 
