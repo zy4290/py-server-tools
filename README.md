@@ -21,6 +21,20 @@
 ```
 {
     "project-name": "test",
+    "local-repo": {
+        "html": "/usr/longrise/test/html/",
+        "jar": "/usr/longrise/test/WEB-INF/lib/",
+        "leapclient": "/usr/longrise/test/WEB-INF/resourceLib/"
+    },
+    "remote-servers": [
+        {
+            "ip": "192.168.7.212",
+            "ssh-port": "62222",
+            "ssh-username": "root",
+            "ssh-password": "longrise",
+            "py-server-tools-home": "/usr/local/py-server-tools/"
+        }
+    ],
     "nginx": {
         "nginx-home": "/usr/local/nginx",
         "nginx-reload-cmd": "nginx -s reload",
@@ -29,7 +43,8 @@
             "upstream-name": "jetty",
             "keepalive": 1,
             "node-group": {
-                "group1": {
+                "jetty1": {
+                    "default-group": "primary",
                     "nodes": {
                         "jetty1": {
                             "health-check-url": "http://127.0.0.1:8080/",
@@ -39,20 +54,25 @@
                             "backup": false
                         },
                         "jetty1-backup": {
-                            "health-check-url": "http://127.0.0.1:8082/",
-                            "upstream-url": "127.0.0.1:8082",
-                            "start-cmd": "/opt/jettygroup/jetty1-backup/bin/jetty.sh start",
-                            "stop-cmd": "/opt/jettygroup/jetty1-backup/bin/jetty.sh stop",
+                            "health-check-url": "http://127.0.0.1:8081/",
+                            "upstream-url": "127.0.0.1:8081",
+                            "start-cmd": "/opt/jettygroup/jetty1.backup/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty1.backup/bin/jetty.sh stop",
                             "backup": true
                         }
                     },
-                    "default-group": "primary"
+                    "repo": {
+                        "html": "/usr/longrise/html1/",
+                        "jar": "/usr/longrise/test1/WEB-INF/lib/",
+                        "leapclient": "/usr/longrise/test1/WEB-INF/resourceLib/"
+                    }
                 },
-                "group2": {
+                "jetty2": {
+                    "default-group": "standby",
                     "nodes": {
                         "jetty2": {
-                            "health-check-url": "http://127.0.0.1:8081/",
-                            "upstream-url": "127.0.0.1:8081",
+                            "health-check-url": "http://127.0.0.1:8082/",
+                            "upstream-url": "127.0.0.1:8082",
                             "start-cmd": "/opt/jettygroup/jetty2/bin/jetty.sh start",
                             "stop-cmd": "/opt/jettygroup/jetty2/bin/jetty.sh stop",
                             "backup": false
@@ -60,12 +80,16 @@
                         "jetty2-backup": {
                             "health-check-url": "http://127.0.0.1:8083/",
                             "upstream-url": "127.0.0.1:8083",
-                            "start-cmd": "/opt/jettygroup/jetty2-backup/bin/jetty.sh start",
-                            "stop-cmd": "/opt/jettygroup/jetty2-backup/bin/jetty.sh stop",
+                            "start-cmd": "/opt/jettygroup/jetty2.backup/bin/jetty.sh start",
+                            "stop-cmd": "/opt/jettygroup/jetty2.backup/bin/jetty.sh stop",
                             "backup": true
                         }
                     },
-                    "default-group": "standby"
+                    "repo": {
+                        "html": "/usr/longrise/html2/",
+                        "jar": "/usr/longrise/test2/WEB-INF/lib/",
+                        "leapclient": "/usr/longrise/test2/WEB-INF/resourceLib/"
+                    }
                 }
             }
         }
