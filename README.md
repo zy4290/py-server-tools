@@ -1,16 +1,23 @@
 # py-server-tools
 
 ## 前提
+
 在一台服务器上
+
 使用Nginx作为反向代理
+
 两组后端服务，每组后端服务至少两个容器，一主一备
 
 ## 目标
+
 实现容器状态监控和重启，升级不中断服务和异常回滚
 
 ## 组件
+
 ### conf/config.json
+
 全局配置文件，包含Nginx和后端服务的重要配置参数，配置示例如下:
+
 ```
 {
     "project-name": "test",
@@ -65,10 +72,15 @@
     }
 }
 ```
+
 ### runtime
+
 runtime由脚本根据全局配置文件(config.json)和运行时环境生成，包括：
+
 * node-group-status.json
+
 node-group-status.json记录当前后端服务组的状态(primary/standby)和关联服务节点名称，由primary-upstream-switch.py生成和编辑，内容示例如下：
+
 ```
 {
     "standby": {
@@ -87,8 +99,11 @@ node-group-status.json记录当前后端服务组的状态(primary/standby)和�
     }
 }
 ```
+
 * node-health-status.json
+
 node-health-status.json记录服务节点的状态信息('n/a'/running/dead)和健康数据，由nodes-health-check.py生成和编辑，内容示例如下：
+
 ```
 {
     "jetty1-backup": {
@@ -129,16 +144,27 @@ node-health-status.json记录服务节点的状态信息('n/a'/running/dead)和�
     }
 }
 ```
+
 ### python script
+
 * nginx-upstream-edit.py
+
 根据primary组的节点生成Nginx的upstream配置项
+
 * nodes-health-check.py
+
 遍历health-check-url配置，更新节点状态信息与健康信息
+
 * primary-nodes-startup.py
+
 启动primary组服务节点
+
 * standby-nodes-shutdown.py
+
 停止standby组服务节点
+
 * primary-upstream-switch.py
+
 切换node-group-status.json的primary和standby服务节点
 
 
