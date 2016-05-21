@@ -2,12 +2,11 @@
 import sys
 
 # usage tip
-if(len(sys.argv) != 2):
+if len(sys.argv) != 2:
     print("""usage:
     python nginx-access-log-analysis.py [nginx_log_path]""")
     sys.exit()
 
-# stat viriables
 line_count = 0
 post_req_count = 0
 post_req_len = 0
@@ -50,7 +49,7 @@ with open(sys.argv[1], 'r') as access_log:
             error_analysis_count += 1
 
 # stat result output
-if(error_analysis_count > 0):
+if error_analysis_count > 0:
     print("Warning: %d lines analysis failed." % error_analysis_count)
 print("-request stat-")
 print("total request count: %d" % line_count)
@@ -61,7 +60,7 @@ print("GET count: %d" % get_req_count)
 print("GET length: %d bytes" % get_req_len)
 print("GET average length: %d bytes" % int(get_req_len/get_req_count))
 print("GET 304 ratio: %.2f%%" % (get_304_count*100/get_req_count))
-#print("GET 304 length: %d bytes" % get_304_len)
+# print("GET 304 length: %d bytes" % get_304_len)
 print
 print("-file stat-")
 for k, v in file_access_stat.items():
